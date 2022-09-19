@@ -97,7 +97,7 @@ atomic_tests:
     url_path:
       description: url to download Exe
       type: Url
-      default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1027/bin/T1027.zip
+      default: https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1027/bin/T1027.zip
   dependency_executor_name: powershell
   dependencies:
   - description: |
@@ -186,7 +186,7 @@ atomic_tests:
     remote_file:
       description: URL of file to download
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/LICENSE.txt
+      default: https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/LICENSE.txt
     local_path:
       description: Local path/filename to save the dowloaded file to
       type: Path

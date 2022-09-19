@@ -128,7 +128,7 @@ atomic_tests:
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
       [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -f (objectcategory=group)

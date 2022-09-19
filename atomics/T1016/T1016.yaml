@@ -85,7 +85,7 @@ atomic_tests:
     portfile_url:
       description: URL to top-128.txt
       type: Url
-      default: https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1016/src/top-128.txt
+      default: https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1016/src/top-128.txt
     port_file:
       description: The path to a text file containing ports to be scanned, one port per line. The default list uses the top 128 ports as defined by Nmap.
       type: Path
@@ -149,7 +149,7 @@ atomic_tests:
     prereq_command: |
       if (Test-Path #{adfind_path}) {exit 0} else {exit 1}
     get_prereq_command: |
-      Invoke-WebRequest -Uri "https://github.com/redcanaryco/atomic-red-team/raw/master/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
+      Invoke-WebRequest -Uri "https://github.com/jmac774/atomic-red-team/raw/safe/atomics/T1087.002/src/AdFind.exe" -OutFile #{adfind_path}
   executor:
     command: |
       #{adfind_path} -f (objectcategory=subnet)
