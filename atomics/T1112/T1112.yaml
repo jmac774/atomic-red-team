@@ -97,16 +97,13 @@ atomic_tests:
     They can either specify it during the execution of the powershell script or change the registry value for it.
   supported_platforms:
   - windows
-  input_arguments:
-    default_execution_policy:
-      description: Specify the default poweshell execution policy
-      type: String
-      default: Default
   executor:
     command: |
+      Get-ExecutionPolicy -Scope LocalMachine > C:\T1112-policy-backup.txt
       Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine
     cleanup_command: |
-      try { Set-ExecutionPolicy -ExecutionPolicy #{default_execution_policy} -Scope LocalMachine -Force } catch {}
+      try { Set-ExecutionPolicy -ExecutionPolicy (Get-Content C:\T1112-policy-backup.txt) -Scope LocalMachine -Force } catch {}
+      Remove-Item -Force C:\T1112-policy-backup.txt
     name: powershell
 - name: BlackByte Ransomware Registry Changes - CMD
   auto_generated_guid: 4f4e2f9f-6209-4fcf-9b15-3b7455706f5b
