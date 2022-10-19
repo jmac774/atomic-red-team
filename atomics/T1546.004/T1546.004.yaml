@@ -37,5 +37,5 @@ atomic_tests:
       echo '#{command_to_add}' >> ~/.bashrc
     cleanup_command: |
       head -n '-2' ~/.bashrc > /tmp/T1546.004
-      mv /tmp/T1546.004 ~/.bash_profile
+      mv /tmp/T1546.004 ~/.bashrc
     name: sh
