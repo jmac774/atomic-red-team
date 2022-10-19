@@ -12,7 +12,7 @@ atomic_tests:
     command_to_add:
       description: Command to add to the .bash_profile file
       type: String
-      default: echo "Hello from Atomic Red Team T1546.004"
+      default: echo "Hello from Atomic Red Team T1546.004" > /tmp/T1546.004
   executor:
     command: |
       echo '#{command_to_add}' >> ~/.bash_profile
@@ -36,4 +36,5 @@ atomic_tests:
       echo '#{command_to_add}' >> ~/.bashrc
     cleanup_command: |
       sed -i '/#{command_to_add}/d' ~/.bashrc
+      rm /tmp/T1546.004 2>/dev/null
     name: sh
